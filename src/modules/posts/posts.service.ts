@@ -7,7 +7,7 @@ export class PostsService {
   private posts: Post[] = [];
   async create(createPostDto: CreatePostDto): Promise<Post> {
     const newPost: Post = {
-      id: this.posts.length + 1,
+      id: Date.now(),
       ...createPostDto,
       author: createPostDto.author || 'Anonymous',
       title: createPostDto.title || 'Untitled',
