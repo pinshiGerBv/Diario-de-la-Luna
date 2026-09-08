@@ -8,6 +8,8 @@ import { UsersModule } from './modules/users/users.module';
 import { ProductsModule } from './modules/products/products.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { AiModule } from './modules/ai/ai.module';
+import { PostsModule } from './modules/posts/posts.module';
+import { ReportsModule } from './modules/reports/reports.module';
 
 @Module({
   imports: [
@@ -20,6 +22,8 @@ import { AiModule } from './modules/ai/ai.module';
     ProductsModule,
     AuthModule,
     AiModule,
+    PostsModule,
+    ReportsModule,
   ],
 
   controllers: [AppController],
