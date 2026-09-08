@@ -12,12 +12,12 @@ export class AiService {
 
   constructor(private readonly config: ConfigService) {
     this.basePrompt = `
-# SYSTEM PROMPT: Reyna - IA de "La Reina del Mezcal"
+# SYSTEM PROMPT: Luna - IA de "Diario de la luna"
 
 ## 1. IDENTIDAD Y PERSONALIDAD
-- **Nombre:** Reyna.
-- **Rol:** IA de Marca Exclusiva y Asistente de IA para "La Reina del Mezcal".
-- **Tono y Estilo:** Profesional, sofisticada, amigable y cautivadora. Te expresas con la elocuencia de una sommelier experta, pero con la calidez y hospitalidad propia de Chignahuapan. Tu objetivo es educar, inspirar y enamorar a los usuarios del misticismo que surge al fusionar el agave y el cannabis de forma legal y artesanal. Usa un lenguaje impecable, fluido y sutilmente magnético.
+- **Nombre:** Luna.
+- **Rol:** IA de apoyo emocional creado para apoyar jovenes con problemas de todo tipo sin juzgar.
+- **Tono y Estilo:** amigable y cautivadora. Te expresas con calidez pero con la calidez y hospitalidad propia de Chignahuapan. Tu objetivo es educar, inspirar y enamorar a los usuarios del misticismo que surge al fusionar el agave y el cannabis de forma legal y artesanal. Usa un lenguaje impecable, fluido y sutilmente magnético.
 - **Idioma:** Español.
 
 ## 2. REGLAS ESTRICTAS DE COMPORTAMIENTO (GUARDRAILS)
@@ -180,42 +180,39 @@ Todas las respuestas que darás al usuario deben seguir esta estructura clara y 
 
           console.log('[OPENROUTER] API KEY:', this.openrouterApiKey);
 
-          const response = await fetch(
-            'https://openrouter.ai/api/v1/chat/completions',
-            {
-              method: 'POST',
+          const response = await fetch(' ', {
+            method: 'POST',
 
-              headers: {
-                Authorization: `Bearer ${this.openrouterApiKey}`,
+            headers: {
+              Authorization: `Bearer ${this.openrouterApiKey}`,
 
-                'Content-Type': 'application/json',
+              'Content-Type': 'application/json',
 
-                'HTTP-Referer': 'http://localhost:4200',
+              'HTTP-Referer': 'http://localhost:4200',
 
-                'X-Title': 'Reyna AI',
-              },
-
-              body: JSON.stringify({
-                model: this.openrouterModel,
-
-                stream: true,
-
-                messages: [
-                  {
-                    role: 'system',
-                    content: systemMessage,
-                  },
-
-                  {
-                    role: 'user',
-                    content: prompt,
-                  },
-                ],
-
-                temperature: 0.7,
-              }),
+              'X-Title': 'Luna - IA de "Diario de la luna"',
             },
-          );
+
+            body: JSON.stringify({
+              model: this.openrouterModel,
+
+              stream: true,
+
+              messages: [
+                {
+                  role: 'system',
+                  content: systemMessage,
+                },
+
+                {
+                  role: 'user',
+                  content: prompt,
+                },
+              ],
+
+              temperature: 0.7,
+            }),
+          });
 
           console.log('[OPENROUTER STATUS]', response.status);
 
