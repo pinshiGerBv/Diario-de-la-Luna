@@ -23,10 +23,8 @@ export class PostsService {
     return newPost;
   }
 
-  // 1. Usar async/Promise para mantener la firma asíncrona estándar en NestJS.
-  // 2. Usar [...this.posts] (spread operator) para retornar una copia del arreglo.
   async getAll(): Promise<Post[]> {
-    return [...this.posts];
+    return [...this.posts.reverse()];
   }
 
   getById(id: number): Post {
