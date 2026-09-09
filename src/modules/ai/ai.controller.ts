@@ -40,9 +40,16 @@ export class AiController {
     } catch (error) {
       console.error(error);
 
+      const message =
+        typeof error === 'string'
+          ? error
+          : error instanceof Error
+            ? error.message
+            : 'Error interno.';
+
       res.write(
         `data: ${JSON.stringify({
-          text: 'Error interno.',
+          text: `Error: ${message}`.slice(0, 500),
         })}\n\n`,
       );
     } finally {
