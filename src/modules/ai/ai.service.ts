@@ -84,7 +84,10 @@ Todas las respuestas que darás al usuario deben seguir esta estructura clara y 
 
     this.ollamaModel = process.env.OLLAMA_MODEL || 'reyna-ai';
 
-    this.openrouterApiKey = process.env.OPENROUTER_API_KEY || '';
+    this.openrouterApiKey =
+      process.env['luna-apikey'] ||
+      process.env.OPENROUTER_API_KEY ||
+      '';
 
     this.openrouterModel =
       process.env.OPENROUTER_MODEL || 'openai/gpt-3.5-turbo';
