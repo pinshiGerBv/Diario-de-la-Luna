@@ -11,7 +11,7 @@ export default () => ({
 
   openrouter: {
     url: process.env.OPENROUTER_URL,
-    apiKey: process.env.OPENROUTER_API_KEY,
+    apiKey: process.env['luna-apikey'],
     model: process.env.OPENROUTER_MODEL,
   },
 
