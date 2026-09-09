@@ -10,7 +10,7 @@ async function bootstrap() {
 
   // Configuración de CORS
   app.enableCors({
-    origin: ['http://localhost:4200', 'https://diario-de-la-luna.web.app'],
+    origin: ['http://localhost:4200', 'https://diario-de-la-luna.web.app/'],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true,
   });
