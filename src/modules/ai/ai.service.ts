@@ -91,7 +91,6 @@ Todas las respuestas que darás al usuario deben seguir esta estructura clara y 
 
     console.log('================');
     console.log('PROVIDER:', this.provider);
-    console.log('API KEY:', this.openrouterApiKey);
     console.log('MODEL:', this.openrouterModel);
     console.log('================');
   }
@@ -178,41 +177,42 @@ Todas las respuestas que darás al usuario deben seguir esta estructura clara y 
         if (this.provider === 'openrouter') {
           console.log('[OPENROUTER] Prompt:', prompt);
 
-          console.log('[OPENROUTER] API KEY:', this.openrouterApiKey);
+          const response = await fetch(
+            'https://openrouter.ai/api/v1/chat/completions',
+            {
+              method: 'POST',
 
-          const response = await fetch(' ', {
-            method: 'POST',
+              headers: {
+                Authorization: `Bearer ${this.openrouterApiKey}`,
 
-            headers: {
-              Authorization: `Bearer ${this.openrouterApiKey}`,
+                'Content-Type': 'application/json',
 
-              'Content-Type': 'application/json',
+                'HTTP-Referer': 'http://localhost:4200',
 
-              'HTTP-Referer': 'http://localhost:4200',
+                'X-Title': 'Luna - IA de "Diario de la luna"',
+              },
 
-              'X-Title': 'Luna - IA de "Diario de la luna"',
+              body: JSON.stringify({
+                model: this.openrouterModel,
+
+                stream: true,
+
+                messages: [
+                  {
+                    role: 'system',
+                    content: systemMessage,
+                  },
+
+                  {
+                    role: 'user',
+                    content: prompt,
+                  },
+                ],
+
+                temperature: 0.7,
+              }),
             },
-
-            body: JSON.stringify({
-              model: this.openrouterModel,
-
-              stream: true,
-
-              messages: [
-                {
-                  role: 'system',
-                  content: systemMessage,
-                },
-
-                {
-                  role: 'user',
-                  content: prompt,
-                },
-              ],
-
-              temperature: 0.7,
-            }),
-          });
+          );
 
           console.log('[OPENROUTER STATUS]', response.status);
 

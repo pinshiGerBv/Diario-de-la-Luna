@@ -10,7 +10,7 @@ async function bootstrap() {
 
   // Configuración de CORS
   app.enableCors({
-    origin: ['http://localhost:4200', 'https://la-reina-del-mezcal.web.app'],
+    origin: ['http://localhost:4200', ''],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true,
   });
